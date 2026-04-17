@@ -3,31 +3,47 @@ import { Link } from "react-router";
 
 const ErrorPage = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 px-4">
       
-      {/* 404 Text */}
-      <h1 className="text-7xl md:text-9xl font-extrabold text-gray-800">
-        404
-      </h1>
+      {/* Glass Card */}
+      <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl p-8 md:p-12 text-center max-w-lg w-full text-white">
+        
+        {/* 404 */}
+        <h1 className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-wider">
+          404
+        </h1>
 
-      {/* Title */}
-      <h2 className="mt-4 text-2xl md:text-3xl font-semibold text-gray-700">
-        Page Not Found
-      </h2>
+        {/* Title */}
+        <h2 className="mt-4 text-xl sm:text-2xl md:text-3xl font-semibold">
+          Oops! Page Not Found
+        </h2>
 
-      {/* Description */}
-      <p className="mt-2 text-gray-500 max-w-md">
-        Sorry, the page you are looking for doesn’t exist or has been moved.
-      </p>
+        {/* Description */}
+        <p className="mt-3 text-sm sm:text-base text-white/80">
+          The page you are looking for might have been removed, 
+          had its name changed, or is temporarily unavailable.
+        </p>
 
-      {/* Button */}
-      <Link
-        to="/"
-        className="mt-6 inline-block px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition duration-300"
-      >
-        Go Back Home
-      </Link>
+        {/* Buttons */}
+        <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          
+          <Link
+            to="/"
+            className="px-6 py-3 bg-white text-indigo-600 font-medium rounded-lg hover:bg-gray-100 transition"
+          >
+            Go Home
+          </Link>
 
+          <button
+            onClick={() => window.history.back()}
+            className="px-6 py-3 border border-white/40 rounded-lg hover:bg-white/20 transition"
+          >
+            Go Back
+          </button>
+
+        </div>
+
+      </div>
     </div>
   );
 };
