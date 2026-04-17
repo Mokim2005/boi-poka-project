@@ -23,23 +23,24 @@ const Banner = () => {
   }, []);
 
   return (
-    <div ref={bannerRef} className="py-20 px-4">
+    <div ref={bannerRef} className="py-16 md:py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="glass-card hero-content flex-col lg:flex-row-reverse">
+        <div className="glass-card hero-content flex-col lg:flex-row-reverse gap-8 lg:gap-12 items-center">
           <motion.div
             ref={imgRef}
             whileHover={{ scale: 1.05, rotate: 2 }}
             transition={{ type: 'spring', stiffness: 300 }}
-            className="relative"
+            className="relative w-full max-w-sm mx-auto lg:mx-0"
           >
             <div className="absolute -inset-4 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-2xl blur-xl opacity-50"></div>
             <img
               src={BookImg}
-              className="relative max-w-sm rounded-2xl shadow-2xl border border-white/20"
+              className="relative w-full max-w-xs mx-auto rounded-2xl shadow-2xl border border-white/20"
+              alt="Books"
             />
           </motion.div>
           
-          <div ref={contentRef} className="text-white">
+          <div ref={contentRef} className="text-white text-center lg:text-left w-full">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -52,7 +53,7 @@ const Banner = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-5xl font-bold mb-6"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
             >
               Your Gateway to{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
@@ -63,7 +64,7 @@ const Banner = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="py-6 text-white/70 text-lg"
+              className="py-4 md:py-6 text-white/70 text-base md:text-lg max-w-xl mx-auto lg:mx-0"
             >
               Dive into a world of books. Find your next adventure, learn something new, 
               or simply lose yourself in a great story.
@@ -71,7 +72,7 @@ const Banner = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-ghost px-8 py-3 text-white font-semibold rounded-full"
+              className="btn-ghost px-6 md:px-8 py-3 text-white font-semibold rounded-full"
             >
               Browse Collection
             </motion.button>
@@ -85,8 +86,14 @@ const Banner = () => {
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.15);
           border-radius: 30px;
-          padding: 40px;
+          padding: 30px;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (min-width: 1024px) {
+          .glass-card {
+            padding: 40px;
+          }
         }
 
         .btn-ghost {

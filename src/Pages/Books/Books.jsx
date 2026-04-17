@@ -27,7 +27,7 @@ const Books = ({ data }) => {
       <motion.h1 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-4xl md:text-5xl font-bold text-center text-white mb-12"
+        className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-white mb-10 md:mb-12"
       >
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">
           Popular Books
@@ -39,21 +39,14 @@ const Books = ({ data }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:grid-cols-3 max-w-7xl mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 max-w-7xl mx-auto"
       >
         {data.map((book) => (
-          <motion.div key={book.bookId} variants={itemVariants}>
+          <motion.div key={book.bookId} variants={itemVariants} className="flex justify-center">
             <Book book={book}></Book>
           </motion.div>
         ))}
       </motion.div>
-
-      <style>{`
-        .glass-section {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-        }
-      `}</style>
     </div>
   );
 };

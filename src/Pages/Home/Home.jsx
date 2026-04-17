@@ -8,7 +8,6 @@ import { FaArrowDown } from 'react-icons/fa';
 
 const Home = () => {
   const data = useLoaderData();
-  const heroRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
   const btnRef = useRef(null);
@@ -33,7 +32,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800"></div>
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl"></div>
@@ -41,21 +40,21 @@ const Home = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-3xl"></div>
       </div>
       
-      <div ref={heroRef} className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="glass-container max-w-4xl text-center">
-          <h1 ref={titleRef} className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-[85vh] px-4">
+        <div className="glass-container max-w-4xl text-center mx-auto">
+          <h1 ref={titleRef} className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">
               Boi Poka
             </span>
           </h1>
-          <p ref={subtitleRef} className="text-xl md:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-light">
+          <p ref={subtitleRef} className="text-lg md:text-xl lg:text-2xl text-white/80 mb-10 max-w-2xl mx-auto font-light">
             Discover your next favorite book. Explore thousands of stories waiting for you.
           </p>
           <motion.button
             ref={btnRef}
             whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(236, 72, 153, 0.5)' }}
             whileTap={{ scale: 0.95 }}
-            className="glass-btn px-10 py-4 text-lg font-semibold text-white rounded-full"
+            className="glass-btn px-8 py-3 md:px-10 md:py-4 text-base md:text-lg font-semibold text-white rounded-full"
           >
             Start Exploring
           </motion.button>
@@ -65,13 +64,13 @@ const Home = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.8 }}
-          className="absolute bottom-10"
+          className="absolute bottom-8"
         >
           <FaArrowDown className="text-white/50 text-2xl animate-bounce" />
         </motion.div>
       </div>
 
-      <div className="relative z-10 glass-section py-20">
+      <div className="relative z-10 glass-section">
         <Banner></Banner>
         <Books data={data}></Books>
       </div>
@@ -82,8 +81,14 @@ const Home = () => {
           backdrop-filter: blur(20px);
           border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 30px;
-          padding: 60px 40px;
+          padding: 40px 30px;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+          .glass-container {
+            padding: 60px 40px;
+          }
         }
 
         .glass-btn {
