@@ -10,89 +10,75 @@ const Navber = () => {
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
-      className="fixed top-0 left-0 w-full z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10"
+      className="fixed inset-x-0 top-0 z-50 bg-gray-900/90 backdrop-blur-md border-b border-white/10"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 🔥 CENTERED CONTENT */}
+      <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         
-        <div className="flex justify-between items-center h-16">
-          
-          {/* Left */}
-          <div className="flex items-center gap-3">
-            
-            {/* Mobile Toggle */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="lg:hidden text-white text-xl"
-            >
-              {open ? <FaTimes /> : <FaBars />}
-            </button>
+        {/* Left */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setOpen(!open)}
+            className="lg:hidden text-white text-xl"
+          >
+            {open ? <FaTimes /> : <FaBars />}
+          </button>
 
-            {/* Logo */}
-            <Link to="/" className="text-xl font-bold">
-              <span className="bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text">
-                Boi Poka 📚
-              </span>
-            </Link>
-          </div>
-
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex">
-            <ul className="flex items-center gap-8 text-white font-medium">
-              <li>
-                <Link className="hover:text-pink-400 transition" to="/">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-pink-400 transition" to="/about">
-                  About
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Right */}
-          <div>
-            <button className="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm font-medium hover:opacity-90 transition">
-              Sign In
-            </button>
-          </div>
+          <Link to="/" className="text-xl font-bold">
+            <span className="bg-gradient-to-r from-pink-400 to-purple-400 text-transparent bg-clip-text">
+              Boi Poka 📚
+            </span>
+          </Link>
         </div>
+
+        {/* Center Menu */}
+        <ul className="hidden lg:flex items-center gap-8 text-white font-medium">
+          <li>
+            <Link className="hover:text-pink-400 transition" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-pink-400 transition" to="/about">
+              About
+            </Link>
+          </li>
+        </ul>
+
+        {/* Right */}
+        <button className="px-5 py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 text-white text-sm font-medium hover:opacity-90 transition">
+          Sign In
+        </button>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden bg-gray-900 border-t border-white/10"
+            exit={{ opacity: 0, y: -15 }}
+            className="lg:hidden w-full bg-gray-900 border-t border-white/10"
           >
-            <ul className="flex flex-col px-6 py-4 space-y-4 text-white">
-              <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  className="hover:text-pink-400 transition"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  onClick={() => setOpen(false)}
-                  className="hover:text-pink-400 transition"
-                  to="/about"
-                >
-                  About
-                </Link>
-              </li>
+            {/* SAME CENTER WIDTH */}
+            <div className="max-w-7xl mx-auto px-4 py-4">
+              <ul className="flex flex-col gap-4 text-white">
+                <li>
+                  <Link onClick={() => setOpen(false)} to="/">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={() => setOpen(false)} to="/about">
+                    About
+                  </Link>
+                </li>
 
-              <button className="mt-2 w-full py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500">
-                Sign In
-              </button>
-            </ul>
+                <button className="mt-2 w-full py-2 rounded-full bg-gradient-to-r from-pink-500 to-purple-500">
+                  Sign In
+                </button>
+              </ul>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
